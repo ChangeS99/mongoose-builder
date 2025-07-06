@@ -1,0 +1,19 @@
+# Ignore test files and configs
+test/
+tests/
+*.test.ts
+*.spec.ts
+coverage/
+.vscode/
+.env
+*.log
+*.md
+LICENSE
+tsconfig.json
+.gitignore
+.editorconfig
+.idea/
+*.swp
+*.sublime-project
+*.sublime-workspace
+node_modules/

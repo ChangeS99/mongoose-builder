@@ -1,0 +1,43 @@
+{
+  "name": "mongoose-builder",
+  "version": "1.0.0",
+  "description": "A utility for building Mongoose filter stages.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "bun src/example.ts",
+    "build": "bun build ./src/index.ts --outdir ./dist",
+    "test": "bun test",
+    "format": "prettier --write . && eslint . --fix",
+    "check": "prettier --check . && eslint .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier:format": "prettier --write .",
+    "prettier:check": "prettier --check .",
+    "clean": "rm -rf dist",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/mongoose-builder.git"
+  },
+  "keywords": [
+    "mongoose",
+    "filters",
+    "builder",
+    "mongodb",
+    "typescript"
+  ],
+  "author": "Pranim Luyang <luyangpranimdev@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dayjs": "^1.11.10",
+    "mongoose": "^8.0.3"
+  },
+  "devDependencies": {
+    "@types/mongoose": "^5.11.97"
+  }
+}
