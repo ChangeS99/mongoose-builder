@@ -32,14 +32,6 @@ const pipeline = new AggregationPipelineBuilder()
 console.log(pipeline);
 ```
 
-## TypeScript Support
-
-This package is written in TypeScript and ships with type definitions. You can use it directly in TypeScript projects for full type safety and autocompletion.
-
-## Contributing
-
-Pull requests and issues are welcome. Please open an issue to discuss your ideas or report bugs.
-
 ## License
 
 MIT
