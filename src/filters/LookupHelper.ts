@@ -18,7 +18,7 @@ export class LookupHelper {
     matchStages: any,
     localField: string,
     foreignField: string,
-    asName: string = 'looked_up',
+    asName: string = `${collection}_looked_up`,
     unique_foreign_id?: string,
     push?: (stage: any) => void
   ) {
