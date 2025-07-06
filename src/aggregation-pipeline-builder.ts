@@ -1,5 +1,7 @@
 import { FilterStageBuilder } from "./filter-stage-builder";
 
+import { LookupStrictHelper } from "./filters/LookupStrictHelper";
+
 /**
  * AggregationPipelineBuilder provides a fluent API for constructing MongoDB aggregation pipelines.
  * It simplifies adding various stages like $match, $lookup, $project, $sort, etc.,
@@ -88,6 +90,41 @@ export class AggregationPipelineBuilder {
    */
   public lookup(lookup: Record<string, any>): this {
     this.pipeline.push({ $lookup: lookup });
+    return this;
+  }
+
+  /**
+   * Adds a strict $lookup stage followed by $unwind (preserveNullAndEmptyArrays: false) to the pipeline.
+   * This will exclude parent documents if the lookup yields no matches.
+   *
+   * @param collection - The target collection to lookup from.
+   * @param matchStages - The pipeline stages to apply to the looked-up documents.
+   * @param localField - The field from the input documents.
+   * @param foreignField - The field from the documents of the "from" collection.
+   * @param asName - The name of the new array field to add to the input documents.
+   * @param unique_foreign_id - The unique identifier for the foreign field.
+   * @returns The AggregationPipelineBuilder instance (for chaining).
+   *
+   * @example
+   * builder.strictLookup('orders', [{ $match: { status: 'active' } }], 'userId', '_id', 'orders')
+   */
+  public strictLookup(
+    collection: string,
+    matchStages: any,
+    localField: string,
+    foreignField: string,
+    asName: string = `${collection}_looked_up`,
+    unique_foreign_id?: string
+  ): this {
+    LookupStrictHelper.addStrictLookupFromOtherCollection(
+      collection,
+      matchStages,
+      localField,
+      foreignField,
+      asName,
+      unique_foreign_id,
+      (stage) => this.pipeline.push(stage)
+    );
     return this;
   }
 
