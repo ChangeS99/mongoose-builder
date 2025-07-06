@@ -2,7 +2,7 @@
 
 A TypeScript utility for building and composing MongoDB aggregation pipelines with type safety and flexibility.
 
-## Installation
+## Installation (WIP)
 
 ```bash
 npm install mongoose-builder
